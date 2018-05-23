@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.main.MainActivity"
+    >
+
+  <com.tripresso.berry.widget.imageview.NetworkImageView
+      android:id="@+id/imageView"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+  <Button
+      android:id="@+id/resultButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Result"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@+id/permissionButton"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+  <Button
+      android:id="@+id/permissionButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Permission"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toRightOf="@+id/resultButton"
+      app:layout_constraintRight_toRightOf="@+id/crashButton"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+  <Button
+      android:id="@+id/crashButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="crash"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toRightOf="@+id/permissionButton"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+
+</android.support.constraint.ConstraintLayout>

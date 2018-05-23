@@ -1,0 +1,127 @@
+ext {
+  versions = [
+      compileSdk: 27,
+      buildTools: "27.0.3",
+      minSdk: 17,
+      targetSdk: 27,
+      gradleBuildTool: "3.1.2",
+      kotlin: "1.2.41",
+      googleServices: "3.2.0",
+      supportLibrary: "27.1.1",
+      dagger: "2.16",
+      firebase: "11.8.0",
+      robolectric: "3.8",
+      rxlifecycle: "2.2.1",
+      lifecycle: "1.1.1",
+      room: "1.1.0",
+      glide: "4.7.1",
+      retrofit: "2.4.0",
+      okhttp3: "3.10.0",
+      mockito: "2.15.0",
+  ]
+
+  depends = [
+      kotlin: [
+          stdlib: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
+          reflect: "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin",
+      ],
+      //==================== Support Library ====================
+      support: [
+          v4: "com.android.support:support-v4:$versions.supportLibrary",
+          appcompat: "com.android.support:appcompat-v7:$versions.supportLibrary",
+          design: "com.android.support:design:$versions.supportLibrary",
+          cardview: "com.android.support:cardview-v7:$versions.supportLibrary",
+          constraint: "com.android.support.constraint:constraint-layout:1.1.0",
+          multidex: "com.android.support:multidex:1.0.2",
+          preference: "com.android.support:preference-v7:$versions.supportLibrary",
+          preferenceV14: "com.android.support:preference-v14:$versions.supportLibrary"
+      ],
+      //==================== Structure ====================
+      lifecycle: [
+          extensions: "android.arch.lifecycle:extensions:$versions.lifecycle",
+          test: "android.arch.core:core-testing:$versions.lifecycle",
+      ],
+      room: [
+          runtime: "android.arch.persistence.room:runtime:$versions.room",
+          compiler: "android.arch.persistence.room:compiler:$versions.room",
+          rxjava2: "android.arch.persistence.room:rxjava2:$versions.room",
+          test: "android.arch.persistence.room:testing:$versions.room",
+      ],
+      rxjava2: [
+          core: "io.reactivex.rxjava2:rxjava:2.1.13",
+          android: "io.reactivex.rxjava2:rxandroid:2.0.2",
+          kotlin: "io.reactivex.rxjava2:rxkotlin:2.2.0",
+      ],
+      rxbinding2: [
+          kotlin: "com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1",
+      ],
+      rxlifecycle: [
+          core: "com.trello.rxlifecycle2:rxlifecycle:$versions.rxlifecycle",
+          components: "com.trello.rxlifecycle2:rxlifecycle-components:$versions.rxlifecycle",
+          kotlin: "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$versions.rxlifecycle",
+      ],
+      dagger: [
+          core: "com.google.dagger:dagger:$versions.dagger",
+          compiler: "com.google.dagger:dagger-compiler:$versions.dagger",
+          android: "com.google.dagger:dagger-android:$versions.dagger",
+          androidSupport: "com.google.dagger:dagger-android-support:$versions.dagger",
+          androidProcessor: "com.google.dagger:dagger-android-processor:$versions.dagger",
+      ],
+      retrofit: [
+          core: "com.squareup.retrofit2:retrofit:$versions.retrofit",
+          rxjava2: "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+          jackson: "com.squareup.retrofit2:converter-jackson:$versions.retrofit",
+      ],
+      okhttp3: [
+          core: "com.squareup.okhttp3:okhttp:$versions.okhttp3",
+          interceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3",
+      ],
+      crashlytics: [
+          core: "com.crashlytics.sdk.android:crashlytics:2.9.2",
+      ],
+      logger: [
+          timber: 'com.jakewharton.timber:timber:4.7.0',
+      ],
+      playService: [
+          base: 'com.google.android.gms:play-services-base:11.8.0',
+      ],
+      firebase: [
+          messaging: "com.google.firebase:firebase-messaging:$versions.firebase",
+          firestore: "com.google.firebase:firebase-firestore:$versions.firebase",
+          storage: "com.google.firebase:firebase-storage:$versions.firebase",
+          core: "com.google.firebase:firebase-core:$versions.firebase",
+      ],
+      rxActivityResult: [
+          core: "com.github.VictorAlbertos:RxActivityResult:0.4.5-2.x"
+      ],
+      //=================== UI ===================
+      glide: [
+          core: "com.github.bumptech.glide:glide:$versions.glide",
+          okhttp3: "com.github.bumptech.glide:okhttp3-integration:$versions.glide",
+          compiler: "com.github.bumptech.glide:compiler:$versions.glide",
+      ],
+      material: [
+          dimens: "com.dmitrymalkovich.android:material-design-dimens:1.4",
+      ],
+      cropper: [
+          core: "com.theartofdev.edmodo:android-image-cropper:2.6.+",
+      ],
+      //==================== Test ====================
+      junit: "junit:junit:4.12",
+      assertj: "org.assertj:assertj-core:3.9.0",
+      mockito: [
+          core: "org.mockito:mockito-core:$versions.mockito",
+          inline: "org.mockito:mockito-inline:$versions.mockito",
+          kotlin: "com.nhaarman:mockito-kotlin:1.5.0"
+      ],
+      robolectric: [
+          core: "org.robolectric:robolectric:$versions.robolectric",
+          multidex: "org.robolectric:shadows-multidex:$versions.robolectric"
+      ],
+      supporttest: [
+          runner: "com.android.support.test:runner:1.0.2",
+          espresso: "com.android.support.test.espresso:espresso-core:3.0.2",
+          contrib: "com.android.support.test.espresso:espresso-contrib:2.2.2"
+      ]
+  ]
+}

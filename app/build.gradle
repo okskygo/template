@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+  signingConfigs {
+    release {
+      storeFile file('secret/release.jks')
+      storePassword KEY_STORE_PASSWORD
+      keyAlias "tripressoreleasekey"
+      keyPassword RELEASE_KEY_PASSWORD
+    }
+  }
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
+    }
+  }
+  compileSdkVersion 'android-P'
+  defaultConfig {
+    applicationId "com.tripresso.berry"
+    minSdkVersion versions.minSdk
+    targetSdkVersion versions.targetSdk
+    versionCode 1
+    versionName "0.1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    multiDexEnabled true
+    buildConfigField 'String', 'TEST_API', '"https://jsonplaceholder.typicode.com/"'
+    kapt {
+      arguments {
+        arg("room.schemaLocation", "$projectDir/schemas".toString())
+      }
+    }
+  }
+  sourceSets {
+    androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+  }
+  buildTypes {
+    debug {
+      debuggable true
+    }
+    release {
+      minifyEnabled false
+      zipAlignEnabled true
+      signingConfig signingConfigs.release
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+androidExtensions {
+  experimental = true
+}
+android.applicationVariants.all {
+  def aptOutputDir = new File(buildDir, "generated/source/apt/${it.unitTestVariant.dirName}")
+  it.unitTestVariant.addJavaSourceFoldersToModel(aptOutputDir)
+}
+dependencies {
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+  //rxjava
+  implementation depends.rxjava2.core
+  implementation depends.rxjava2.android
+  implementation depends.rxjava2.kotlin
+  //rxbinding
+  implementation depends.rxbinding2.kotlin
+  //support
+  implementation depends.support.appcompat
+  implementation depends.support.constraint
+  implementation depends.support.design
+  //retrofit
+  implementation depends.retrofit.core
+  implementation depends.retrofit.rxjava2
+  implementation depends.retrofit.jackson
+  //okhttp3
+  implementation depends.okhttp3.core
+  implementation depends.okhttp3.interceptor
+  //logger
+  implementation depends.logger.timber
+  //lifecycle
+  implementation depends.lifecycle.extensions
+  //room
+  implementation depends.room.runtime
+  implementation depends.room.rxjava2
+  kapt depends.room.compiler
+  //dagger2
+  implementation depends.dagger.core
+  implementation depends.dagger.android
+  implementation depends.dagger.androidSupport
+  kapt depends.dagger.compiler
+  kapt depends.dagger.androidProcessor
+  //crashlytics
+  implementation depends.crashlytics.core
+  //glide
+  implementation(depends.glide.core) {
+    exclude group: "com.android.support"
+  }
+  implementation depends.glide.okhttp3
+  kapt depends.glide.compiler
+  //instrument test
+  androidTestImplementation depends.supporttest.runner
+  androidTestImplementation depends.supporttest.espresso
+  androidTestImplementation depends.room.test
+  //test
+  testImplementation depends.lifecycle.test
+  testImplementation depends.junit
+  testImplementation depends.assertj
+  testImplementation depends.mockito.core
+  testImplementation depends.mockito.inline
+  testImplementation depends.robolectric.core
+  testImplementation depends.robolectric.multidex
+  kaptTest depends.dagger.compiler
+}
